@@ -46,7 +46,6 @@ const ImageResizer = ({
 
         document.addEventListener('mousemove',(e) => {
 
-
             const element =  document.querySelectorAll(`.selected .topleft`);
             const element1 =  document.querySelectorAll(`.selected .topright`);
             const element2 =  document.querySelectorAll(`.selected .bottomright`);
@@ -68,6 +67,41 @@ const ImageResizer = ({
 
 
         });
+
+
+
+        document.addEventListener('touchmove',(e) => {
+
+            const element =  document.querySelectorAll(`.selected .topleft`);
+            const element1 =  document.querySelectorAll(`.selected .topright`);
+            const element2 =  document.querySelectorAll(`.selected .bottomright`);
+            const element3 =  document.querySelectorAll(`.selected .bottomleft`);
+
+
+            if((element.length && element[0].classList.contains('drag')) ||
+                (element1.length && element1[0].classList.contains('drag')) ||
+
+                (element2.length && element2[0].classList.contains('drag')) ||
+
+                (element3.length && element3[0].classList.contains('drag'))
+            ) {
+                resizeImag(e)
+            }
+
+
+
+
+
+        });
+
+
+        document.addEventListener('touchend', (e) => {
+            const element =  document.querySelectorAll('.dragHandler');
+            for(let i=0; i <element.length; i++)
+            {
+                element[i].classList.remove('drag')
+            }
+        })
         document.addEventListener('mouseup',(e) => {
             const element =  document.querySelectorAll('.dragHandler');
             for(let i=0; i <element.length; i++)
@@ -77,13 +111,7 @@ const ImageResizer = ({
         });
 
 
-        document.addEventListener('mouseup',(e) => {
-            const element =  document.querySelectorAll('.dragHandler');
-            for(let i=0; i <element.length; i++)
-            {
-                element[i].classList.remove('drag')
-            }
-        });
+
 
         document.addEventListener('click',(e) => {
 
@@ -120,7 +148,9 @@ const ImageResizer = ({
                  onMouseDown={(e) => {
                 startResize(e,'topleft')
             }}
-
+                onTouchStart={(e) => {
+                    startResize(e,'topleft')
+                }}
 
 
             >
@@ -131,6 +161,9 @@ const ImageResizer = ({
                     e.stopPropagation();
                  }}
                  onMouseDown={(e) => {
+                     startResize(e,'topright')
+                 }}
+                 onTouchStart={(e) => {
                      startResize(e,'topright')
                  }}
 
@@ -145,6 +178,9 @@ const ImageResizer = ({
                  onMouseDown={(e) => {
                      startResize(e,'bottomleft')
                  }}
+                 onTouchStart={(e) => {
+                     startResize(e,'bottomleft')
+                 }}
 
             >
 
@@ -153,6 +189,9 @@ const ImageResizer = ({
 
                  onClick={(e) => {
                      e.stopPropagation();
+                 }}
+                 onTouchStart={(e) => {
+                     startResize(e,'bottomright')
                  }}
                  onMouseDown={(e) => {
                 startResize(e,'bottomright')
@@ -198,4 +237,6 @@ const ImageResizer = ({
         </div>
     )
 }
+
 export default ImageResizer;
+
