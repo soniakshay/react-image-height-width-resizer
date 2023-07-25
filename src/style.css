@@ -1,0 +1,63 @@
+
+.selected {
+    border: 2px solid dodgerblue;
+    width: auto;
+    display: inline-block;
+    padding: 3px;
+    position: relative;
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+.selected .dragHandler.topleft{
+    height: 10px;
+    width: 10px;
+    border: 2px solid dodgerblue;
+    position: absolute;
+    top:-8px;
+    left:-8px;
+    background: white;
+    cursor: nw-resize;
+}
+
+.selected  .dragHandler.topright{
+    height: 10px;
+    width: 10px;
+    border: 2px solid dodgerblue;
+    position: absolute;
+    top:-8px;
+    right:-8px;
+    background: white;
+    cursor: nesw-resize;
+
+}
+
+.selected .dragHandler.bottomleft {
+    height: 10px;
+    width: 10px;
+    border: 2px solid dodgerblue;
+    position: absolute;
+    bottom: -8px;
+    left: -8px;
+    background: white;
+    cursor: nesw-resize;
+}
+
+
+.selected .dragHandler.bottomright{
+    height: 10px;
+    width: 10px;
+    border: 2px solid dodgerblue;
+    position: absolute;
+    bottom:-8px;
+    right:-8px;
+    background: white;
+    cursor: nw-resize;
+
+}
+
+
+
